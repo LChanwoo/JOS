@@ -123,31 +123,55 @@ var study_group_data = [
 $(document).ready(function () {
   function make_card(x) {
     $("div.study_pick:eq(" + x + ")").append(
-      '<div class="study_pick_img"><ul class="sub_cnt_slide_wrap sub_cnt_slide01_wrap">' +
-        '<li class="sub_cnt_list sub_cnt_list01 "><a href="" class="new_out_bg on"><p class="spec_pick"></p>' +
-        '<div class="pick_con_img" style="background-image:url(' +
-        "/img/lcw_career_study.jpg" +
-        ')"><div class="study_pick_img"><img class="study_pick_img1" src="/img/lcw_career_study.jpg"></div>' +
-        '</div><div class="study_pick_img"><dl class="middddle"><dt class="view20Byte1"></dt><dd class="middddle3"><p class="infor txt01"><span class="red cate_infor"></span></p><p class="infor thin date_infor txt02"></p>' +
-        '<p class="infor2 thin txt03"><span class="check_person thin"><strong></strong></span><span class="thin add_infor"></span></p></dd><dt class="middddle2"></dt>' +
-        '<p class="infor3"><strong class="thin"><span class="red thin"></span></strong></p></dl></div></a></li></ul></div>'
+      '<div class="study_pick_img"><ul class="sub_cnt_slide_wrap">' +
+        '<li class="sub_cnt_list">'+
+        '<a href="" class="cardlink">'+
+        '<p class="spec_pick"></p>' +
+        '<div class="pick_con_img" style="background-image:url()">'+
+        '<div class="study_pick_img">'+
+        '<img class="study_pick_img1" src="">'+
+        '</div>' +
+        '</div>'+
+        '<div class="study_pick_img">'+
+        '<dl class="middddle">'+
+        '<dt class="study_title">'+
+        '</dt>'+
+        '<dd class="middddle3">'+
+        '<p class="infor txt01">'+
+        '<span class="cate_infor">'+
+        '</span></p>'+
+        '<p class="txt02"></p>' +
+        '<span class="check_person"></span>'+
+        '<span class="add_infor"></span>'+
+        '</p>'+
+        '</dd>'+
+        '<dt class="middddle2"></dt>' +
+        '<strong class="thin">'+
+        '<span class="thin"></span>'+
+        '</strong>'+
+        '</dl>'+
+        '</div>'+
+        '</a>'+
+        '</li>'+
+        '</ul>'+
+        '</div>'
     );
   }
   for (var i = 0; i < 10; i++) {
     make_card(i);
   }
   for (i of study_group_data) {
-    $("dt.view20Byte1:eq(" + i.number + ")").html(i.title);
+    $("dt.study_title:eq(" + i.number + ")").html(i.title);
     $("span.cate_infor:eq(" + i.number + ")").html(i.category);
     $("p.txt02:eq(" + i.number + ")").html(i.during);
-    $("span.check_person strong:eq(" + i.number + ")").html(
+    $("span.check_person:eq(" + i.number + ")").html(
       i.checkP + " / " + i.checkP2
     );
     $("span.add_infor:eq(" + i.number + ")").html(i.location);
     $(".study_pick_img1:eq(" + i.number + ")").attr("src", i.img);
-    $("a.new_out_bg:eq(" + i.number + ")").attr("href", i.link);
-    $(".red.thin:eq(" + i.number + ")").before("조회");
-    $(".red.thin:eq(" + i.number + ")").html(i.view),
+    $("a.cardlink:eq(" + i.number + ")").attr("href", i.link);
+    $(".thin:eq(" + i.number + ")").before("조회 : ");
+    $(".thin:eq(" + i.number + ")").html(i.view),
       $("strong.thin:eq(" + i.number + ")").append("건");
   }
 });

@@ -11,11 +11,6 @@ ul {
   /* border: 1px solid black; */
 }
 
-.recommend-pcik {
-  display: flex;
-  height: 60px;
-  border: 1px solid black;
-}
 
 .main_cnt_txtbox > dl dd {
   font-size: 14px;
@@ -62,12 +57,7 @@ ul {
   font-size: 13px;
 }
 
-.sidemenu-studysearch.sublist_image {
-  display: block;
-  text-align: center;
-  /* top : 20px; */
-  /* margin-top: 10px; */
-}
+
 
 .side_sub_filter {
   width: 250px;
@@ -776,29 +766,6 @@ ul {
   margin-top: 0px;
 }
 
-@media screen and (max-width: 1299px) and (min-width: 481px) {
-  .px20px {
-    overflow: hidden;
-  }
-  .side_sub_filter {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 481px) {
-  .px20px {
-    overflow: hidden;
-  }
-  .side_sub_filter {
-    display: none;
-  }
-}
-
-.sub_under_search_btn {
-  position: absolute;
-  top: 14px;
-  right: 20px;
-}
 .sub_wrap {
   max-width: 1320px;
   width: 200%;
