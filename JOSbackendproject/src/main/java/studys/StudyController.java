@@ -28,5 +28,5 @@ public class StudyController {
 	public String mystudy() throws Exception{
 		return "lcw_mystudy";
 	}
-
+	//
 }
