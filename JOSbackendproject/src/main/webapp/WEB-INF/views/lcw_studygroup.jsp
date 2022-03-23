@@ -15,6 +15,13 @@
 	<script src="<%=request.getContextPath() %>/resources/js/lcw_card_list.js"></script>
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/top.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style.css">
+	
+	<script>
+ 	$(document).ready(function(){  
+		}); 
+</script>
+	
+	
    </head>
   <body>
         <div class="top">
@@ -79,41 +86,35 @@
 		<div class="content-container">
 
 			<div class="side_sub_filter">
-				<form action="">
+				<form action="studysearch" method="post">
 					<div class="left-sidebar-top">
 						<a href="<%=request.getContextPath() %>/studygroup"><img src="<%=request.getContextPath() %>/resources/img/lcw_main_menu5.png" class="sidebar-top-study"><span class="study">
-							ì¤í°ëëª¨ì§</span>
+							스터디모집</span>
 							</a>
 					</div>
 					<!-- div class="left-sidebar-top" ìë  -->
-					<div>
-						<div class="left-sidebar-line1">
-							<br>
-							<a href="<%=request.getContextPath() %>/mystudy"><p class="left-sidebar-mystudy" >ëì ì¤í°ë</p></a>
-							<br>
-						</div>
-					</div>
+
 					<div>
 						<div class="left-sidebar-line">
 							<br>
-							<p class="left-sidebar-title">ëª¨ì§ë¶ì¼</p>
+							<p class="left-sidebar-title">모집분야</p>
 							<br>
 							<ul>
-								<li><input type="checkbox" id="checkfield" value="ì·¨ì">ì·¨ì</li><br>
-								<li><input type="checkbox" id="checkfield" value="ì´í">ì´í</li><br>
-								<li><input type="checkbox" id="checkfield" value="ìê²©ì¦">ìê²©ì¦</li><br>
-								<li><input type="checkbox" id="checkfield" value="ê¸°í">ê¸°í</li><br>
+								<li><input type="checkbox" name="category" id="checkfield1" value="취업">취업</li><br>
+								<li><input type="checkbox" name="category" id="checkfield1"value="어학">어학</li><br>
+								<li><input type="checkbox" name="category" id="checkfield1"value="자격증">자격증</li><br>
+								<li><input type="checkbox" name="category" id="checkfield1"value="기타">기타</li><br>
 							</ul>
 						</div>
 					</div>
 					<div>
 						<div class="left-sidebar-line">
 							<br>
-							<p class="left-sidebar-title">ëª¨ì§ìí</p>
+							<p class="left-sidebar-title">모집상태</p>
 							<br>
 							<ul>
-								<li><input type="checkbox" id="checkfield" value="ëª¨ì§ì¤">ëª¨ì§ì¤</li><br>
-								<li><input type="checkbox" id="checkfield" value="ëª¨ì§ìë£">ëª¨ì§ìë£</li><br>
+								<li><input type="checkbox" name="finished" id="checkfield2" value="모집중">모집중</li><br>
+								<li><input type="checkbox" name="finished" id="checkfield2"value="모집완료">모집완료</li><br>
 
 							</ul>
 						</div>
@@ -121,18 +122,20 @@
 						<div>
 						<div class="left-sidebar-line">
 							<br>
-							<p class="left-sidebar-title">êµ­ë´ì¸ ì¬ë¶</p>
+							<p class="left-sidebar-title">국내외 여부</p>
 							<br>
 							<ul>
-								<li><input type="checkbox" id="checkfield" value="êµ­ë´">êµ­ë´</li><br>
-								<li><input type="checkbox" id="checkfield" value="êµ­ì¸">êµ­ì¸</li><br>
+								<li><input type="checkbox" name="country" id="checkfield3" value="국내">국내</li><br>
+								<li><input type="checkbox" name="country" id="checkfield3" value="국외">국외</li><br>
 
 							</ul>
 						</div>
 					</div>
 					<!--left-sidebar-checkfield  -->
-			</div>
+			<input type="submit" id="studysearch" value="조건검색">
 			</form>
+			
+			</div>
 			<!-- div class="left-sidebar" -->
 			<!-- //////////////////////////////////////////////////////////////////////////////////////////////////-->
 			<div class="px20px"></div>
@@ -140,15 +143,91 @@
 				<div class="sub_con">
 					<div class="list_sub_wrap">
 						<div class="list_type_title">
-							<h1> <span class="type_pick01">ì¶ì²</span>&nbsp;PICK
-								<!-- ( 8 ê±´ ) -->
-								<p class="tpick">í¨ê» ëª¨ì¬ ì¤í ì¬ë¦¬ê¸°</p>
+							<h1> <span class="type_pick01">추천</span>PICK
+								<p class="tpick">함께 모여 스펙 올리기</p>
 							</h1>
 						</div>
 						<div id="cardlist_section">
 							<ul class="study_cardlist_section_pick">
+<!-- ////////////// -->
+							<c:forEach items="${list }" var= "list" begin="0" end="3">
+									<li class="study_pick">
+										<div class="study_pick_img">
+											<ul class="sub_cnt_slide_wrap">
+												<li class="sub_cnt_list"><a href="${list.link }" class="cardlink">
+														<p class="spec_pick"></p>
+														<div class="pick_con_img" style="background-image: url()">
+															<div class="study_pick_img">
+																<img class="study_pick_img2" src="${list.img }">
+															</div>
+														</div>
+														<div class="study_pick_img">
+															<dl class="middddle">
+																<dt class="study_title">${list.title}</dt>
+																<dd class="middddle3">
+																	<p class="infor txt01">
+																		<span class="cate_infor">${list.category} </span>
+																	</p>
+																	<p class="txt02">${list.startdate} ~ ${list.enddate}</p>
+																	<span class="check_person">모집인원 : ${list.remain} / ${list.total} </span>
+																	 <span class="add_infor"> | ${list.location}</span>
+																</dd>
+																<dt class="middddle2"></dt>
+																<strong class="thin"> 조회 :  ${list.view} 건<span class="thin"></span>
+																</strong>
+															</dl>
+														</div>
+												</a></li>
+											</ul>
+											</div>
+									</li>
+
+								</c:forEach>
 								
+							<!-- 	////// -->
 							</ul>
+
+							<ul class="study_cardlist_section_pick">
+							<c:forEach items="${list }" var= "list" begin="4" end="7">
+									<li class="study_pick">
+										<div class="study_pick_img">
+											<ul class="sub_cnt_slide_wrap">
+												<li class="sub_cnt_list"><a href="${list.link }" class="cardlink">
+														<p class="spec_pick"></p>
+														<div class="pick_con_img" style="background-image: url()">
+															<div class="study_pick_img">
+																<img class="study_pick_img2" src="${list.img }">
+															</div>
+														</div>
+														<div class="study_pick_img">
+															<dl class="middddle">
+																<dt class="study_title">${list.title}</dt>
+																<dd class="middddle3">
+																	<p class="infor txt01">
+																		<span class="cate_infor">${list.category} </span>
+																	</p>
+																	<p class="txt02">${list.startdate} ~ ${list.enddate}</p>
+																	<span class="check_person"> 모집인원 : ${list.remain} / ${list.total} </span>
+																	 <span class="add_infor"> | ${list.location}</span>
+																</dd>
+																<dt class="middddle2"></dt>
+																<strong class="thin"> 조회 :  ${list.view} 건<span class="thin"></span>
+																</strong>
+															</dl>
+														</div>
+												</a></li>
+											</ul>
+											</div>
+									</li>
+
+								</c:forEach>
+								</ul>
+																			<div id= studylistpage> 
+	<%for(int i=1; i<=10 ;i++){ %>
+	<%="<a href=studygroup?page="+i+">"+i+"</a>"%>
+	<%} %>			
+			</div>
+								</div>									
 						</div>
 						<!-- <ul class="sub_cnt_slide_wrap"></ul> -->
 
@@ -156,6 +235,7 @@
 
 					<!-- 		<div class="subboard-study"></div> -->
 				</div>
+
 			</div>
 	</section>
 	<div class="onthefooter"></div>
@@ -163,11 +243,11 @@
 	<footer class="footer">
 		<nav class="footer_nav">
 			<ul class="footer_nav_list">
-				<li class="footer-btn"><a href="#">JOSìê°</a></li>
-				<li class="footer-btn"><a href="#">ì´ì©ì½ê´</a></li>
-				<li class="footer-btn"><a href="#">ê°ì¸ì ë³´ì²ë¦¬ë°©ì¹¨</a></li>
-				<li class="footer-btn"><a href="#">ê´ê³ /ì í´</a></li>
-				<li class="footer-btn"><a href="#">1:1ë¬¸ì</a></li>
+				<li class="footer-btn"><a href="#">JOS소개</a></li>
+				<li class="footer-btn"><a href="#">이용약관</a></li>
+				<li class="footer-btn"><a href="#">개인정보처리방침</a></li>
+				<li class="footer-btn"><a href="#">광고/제휴</a></li>
+				<li class="footer-btn"><a href="#">1:1문의</a></li>
 			</ul>
 		</nav>
 		<div class="footer_info">
@@ -176,19 +256,19 @@
 			</div>
 			<div class="footer_info_company">
 				<div>
-					<span>ê³ ê°ì¼í° : 1234-56789 (íì¼ 09:30 ~ 18:30 / ì ì¬ 12:00 ~ 13:00)
-						ã£ FAX : 1234-567-8901 ã£ Email: multi@multicam.com</span>
+					<span>고객센터 : 1234-56789 (평일 09:30 ~ 18:30 / 점심 12:00 ~ 13:00)
+						ㅣ FAX : 1234-567-8901 ㅣ Email: multi@multicam.com</span>
 				</div>
 				<div>
-					<span>JOS | ìì¸í¹ë³ì ë©ìº êµ¬ ë©ìº ëë¡ 635 ë©ìº ë¹ë© 3ì¸µ ã£ ëí: ê¹ë©ìº </span>
+					<span>JOS | 서울특별시 멀캠구 멀캠대로 635 멀캠빌딩 3층 ㅣ 대표: 김멀캠</span>
 				</div>
 				<div>
-					<span>ì¬ììë±ë¡ë²í¸: 123-45-67890 ã£ íµì íë§¤ìì ê³ ë²í¸: ì  2022-ë©ìº ë©ìº -1245í¸</span>
+					<span>사업자등록번호: 123-45-67890 ㅣ 통신판매업신고번호: 제 2022-멀캠멀캠-1245호</span>
 				</div>
 			</div>
 		</div>
 	</footer>
-    <script src="<%=request.getContextPath() %>/resources/js/clock.js"></script>
+    <script src="resources/js/clock.js"></script>
     <script
       src="https://kit.fontawesome.com/76b8f5560e.js"
       crossorigin="anonymous"

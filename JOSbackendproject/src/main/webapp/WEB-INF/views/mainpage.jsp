@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style.css" />
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/lcw_sub_list.css" />
     <script src="<%=request.getContextPath() %>/resources/js/jquery-3.6.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/lcw_mainpage.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/lcw_mainpage.js"></script> 
   </head>
   <body>
     <div class="top">
-      <div class="top-logo"> <a href="mainpage.html"> <img src="<%=request.getContextPath() %>/resources/img/logo.png" /></a></div>
+      <div class="top-logo"> <a href="mainpage"> <img src="<%=request.getContextPath() %>/resources/img/logo.png" /></a></div>
       <div class="top-login">
-        <span><a href="<%=request.getContextPath() %>/resources/login.html">로그인</a></span>
-        <span><a href="<%=request.getContextPath() %>/resources/certification.html">회원가입</a></span>
-        <span><a href="<%=request.getContextPath() %>/resources/sk_mypage.html">마이페이지</a></span>
+        <span><a href="<%=request.getContextPath() %>/resources/login">로그인</a></span>
+        <span><a href="<%=request.getContextPath() %>/resources/certification">회원가입</a></span>
+        <span><a href="<%=request.getContextPath() %>/resources/sk_mypage">마이페이지</a></span>
       </div>
     </div>
     <div class="search">
@@ -59,7 +59,7 @@
           <a href="./mentoring.html">멘토링</a>
         </li>
         <li class="nav_btn">
-          <a href="/studygroup">스터디모집</a>
+          <a href="<%=request.getContextPath() %>/studygroup">스터디모집</a>
         </li>
         <li class="nav_btn">
           <a href="./planner.html">개인스터디 플래너</a>
@@ -75,27 +75,87 @@
       <div class="study_section">
         <div class="study_recommend">
           <span>이벤트 PICK 추천</span>
-          <span> <a href="lcw_studygroup.html"> + 더 많은 PICK</a></span>
+          <span> <a href="studygroup"> + 더 많은 PICK</a></span>
         </div>
         <div class="study_section_pick">
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
+        <ul class="study_cardlist_section_pick1">
+        	<c:forEach items="${list }" var= "list" begin="0" end="4">
+									<li class="study_pick">
+										<div class="study_pick_img">
+											<ul class="sub_cnt_slide_wrap">
+												<li class="sub_cnt_list"><a href="${list.link }" class="cardlink">
+														<p class="spec_pick"></p>
+														<div class="pick_con_img" style="background-image: url()">
+															<div class="study_pick_img">
+																<img class="study_pick_img1" src="${list.img }">
+															</div>
+														</div>
+														<div class="study_pick_img">
+															<dl class="middddle">
+																<dt class="study_title">${list.title}</dt>
+																<dd class="middddle3">
+																	<p class="infor txt01">
+																		<span class="cate_infor">${list.category} </span>
+																	</p>
+																	<p class="txt02">${list.startdate} ~ ${list.enddate}</p>
+																	<span class="check_person">모집인원 : ${list.remain} / ${list.total} </span>
+																	 <span class="add_infor"> | ${list.location}</span>
+																</dd>
+																<dt class="middddle2"></dt>
+																<strong class="thin"> 조회 :  ${list.view} 건<span class="thin"></span>
+																</strong>
+															</dl>
+														</div>
+												</a></li>
+											</ul>
+											</div>
+									</li>
+
+								</c:forEach>
+								</ul>
       </div>
 
       <div class="study_section">
         <div class="study_recommend">
           <span>이벤트 PICK 추천</span>
-          <span><a href="lcw_studygroup.html"> + 더 많은 PICK</a></span>
+          <span><a href="studygroup"> + 더 많은 PICK</a></span>
         </div>
-        <div class="study_section_pick">
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
-          <div class="study_pick"></div>
+                <div class="study_section_pick">
+                <ul class="study_cardlist_section_pick1">
+				<c:forEach items="${list }" var= "list" begin="5" end="9">
+									<li class="study_pick">
+										<div class="study_pick_img">
+											<ul class="sub_cnt_slide_wrap">
+												<li class="sub_cnt_list"><a href="${list.link }" class="cardlink">
+														<p class="spec_pick"></p>
+														<div class="pick_con_img" style="background-image: url()">
+															<div class="study_pick_img">
+																<img class="study_pick_img1" src="${list.img }">
+															</div>
+														</div>
+														<div class="study_pick_img">
+															<dl class="middddle">
+																<dt class="study_title">${list.title}</dt>
+																<dd class="middddle3">
+																	<p class="infor txt01">
+																		<span class="cate_infor">${list.category} </span>
+																	</p>
+																	<p class="txt02">${list.startdate} ~ ${list.enddate}</p>
+																	<span class="check_person">모집인원 : ${list.remain} / ${list.total} </span>
+																	 <span class="add_infor"> | ${list.location}</span>
+																</dd>
+																<dt class="middddle2"></dt>
+																<strong class="thin"> 조회 :  ${list.view} 건<span class="thin"></span>
+																</strong>
+															</dl>
+														</div>
+												</a></li>
+											</ul>
+											</div>
+									</li>
+
+								</c:forEach>
+								</ul>
       </div>
 
 
@@ -136,7 +196,7 @@
         </div>
       </div>
     </footer>
-    <script src="<%=request.getContextPath() %>/js/clock.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/js/clock.js"></script>
     <script
       src="https://kit.fontawesome.com/76b8f5560e.js"
       crossorigin="anonymous"

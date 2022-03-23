@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="study">
+
+<select id="studylist" resultType="studydto" parameterType="int" >
+
+	select * from study_table order by studyid desc limit #{page} , 8
+</select>
+
+<select id="studylistmain" resultType="studydto" >
+
+	select * from study_table order by studyid desc limit 0 , 10
+</select>
+
+<update id="viewup">
+	update study_table
+	set view = view+1
+	where studyid=#{studyid}
+</update>
+
+<select id="totalpage" resultType="int">
+
+	select count (*) from study_table 
+	
+</select>
+
+<select id="studypagedetail" resultType="studydto" parameterType="int">
+
+	select * from study_table where studyid=#{studyid}
+	
+</select>
+
+<select id="studysearchlist" resultType="studydto" parameterType="studysearchdto">
+
+	select * from study_table where category in
+	<foreach collection="category" item = "category" open="(" close=")" separator=",">
+		#{category}
+	</foreach> 
+	and country in 
+	<foreach collection="country" item = "country" open="(" close=")" separator=",">
+		#{country}
+	</foreach> 
+	 and finished in 
+	<foreach collection="finished" item = "finished" open="(" close=")" separator=",">
+		#{finished}
+	</foreach> 
+	ORDER BY studyid desc limit #{page},8;
+	
+</select>
+
+</mapper>
