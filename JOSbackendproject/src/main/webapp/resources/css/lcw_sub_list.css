@@ -1,0 +1,65 @@
+@charset "UTF-8";
+.study_pick_img{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+.study_pick_img1{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	border-radius: 10px;
+}
+.study_pick_img2{
+	height: 97%;
+	width: 100%;
+	margin-left: -5px;
+	object-fit: contain;
+	border-radius: 10px;
+}
+.study_title{
+	margin-top: 5px;
+	min-height: 40px;
+	border-bottom: 1px solid red;
+}
+#cardlist_section{
+
+	/* display: flex;
+	justify-content: center;
+	margin-bottom: 80px;
+	margin-top: 35px; */
+	margin-top: -30px;
+	width: 1020px;
+	height: 700px;
+}
+.study_cardlist_section_pick {
+	display: flex;
+	/* justify-content: center; */
+	margin-bottom: 15px;
+	margin-top: 15px;
+	width: 1000px;
+}
+.study_pick_card {
+	height: 290px;
+	width: 230px;
+	margin: 0px 5px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px gray;
+	border: 1px solid rgb(199, 199, 199);
+}
+.middddle{
+	text-align: right;
+	margin-right:5px ;
+}
+.middddle2{
+	margin-top: 5px ;
+	padding-bottom:5px ;
+	border-top: 1px solid black;
+	text-align: right;
+
+}
+.middddle3{
+	margin-top: 5px ;
+	padding-bottom:5px ;
+
+}
